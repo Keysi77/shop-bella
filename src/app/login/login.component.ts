@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import * as firebase from 'firebase';
-import { AngularFireAuth } from 'angularfire2/auth';
+import { Component } from '@angular/core';
+import { AuthService } from '../auth.service';
 
 
 @Component({
@@ -9,15 +8,14 @@ import { AngularFireAuth } from 'angularfire2/auth';
   styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  // Inject AngularFireAuth
-  constructor(private afAuth: AngularFireAuth) { }
 
-
-
-  // login with Google
+  // Inject NIE AngularFireAuth, ale vlastnu servicu, kde je logika
+  constructor(private auth: AuthService) { }
+  
+  // login zo auth.service injectnuty
   login(){
-    // redirect na prihlasenie cez google
-   this.afAuth.auth.signInWithRedirect(new firebase.auth.GoogleAuthProvider);
+    this.auth.login();
   }
+
 
 }
