@@ -1,7 +1,4 @@
-import { Component, OnInit } from '@angular/core';
-
-import * as firebase from 'firebase';
-import { Observable } from 'rxjs';
+import { Component } from '@angular/core';
 import { AuthService } from '../auth.service';
 
 @Component({
