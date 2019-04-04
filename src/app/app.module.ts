@@ -25,6 +25,7 @@ import { LoginComponent } from './login/login.component';
 import { AuthService } from './auth.service';
 import { AuthGuardService } from './auth-guard.service';
 import { UserService } from './user.service';
+import { AdminAuthGuardService } from './admin-auth-guard.service';
 
 @NgModule({
   declarations: [
@@ -58,13 +59,13 @@ import { UserService } from './user.service';
       {path: 'my/orders', component: MyOrdersComponent, canActivate: [AuthGuardService]},
       {path: 'login', component: LoginComponent},
       {path: 'order-success', component: OrderSuccessComponent},
-      // Routes pre admina/adminov
-      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService]},
-      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService]},
+      // Routes pre admina/adminov - AdminAuthGuardService - ci sme isAdmin = true 
+      {path: 'admin/products', component: AdminProductsComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
+      {path: 'admin/orders', component: AdminOrdersComponent, canActivate: [AuthGuardService, AdminAuthGuardService]},
     ]),
     NgbModule.forRoot()
   ],
-  providers: [AuthService, AuthGuardService, UserService],
+  providers: [AuthService, AuthGuardService, UserService, AdminAuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

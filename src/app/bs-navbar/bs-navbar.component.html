@@ -17,13 +17,17 @@
             </li>
         </ng-template>
         <!-- else vygeneruje template v directive pomocou template bindingu -->
-        <li ngbDropdown *ngIf="auth.user$ | async as user; else anonymousUser" class="nav-item dropdown">
+        <!-- netreba uz pouzivat auth.appUser$ | async as user - lebo je v bs-navbar definovany appUser -->
+        <li ngbDropdown *ngIf="appUser; else anonymousUser" class="nav-item dropdown">
           <a ngbDropdownToggle class="nav-link dropdown-toggle" id="dropdown01" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">{{user.displayName}}</a>
+            aria-haspopup="true" aria-expanded="false">{{appUser.name}}</a>
+            <!-- uz sa nepouzije user.displayName ale name ktory je v interfaci AppUser -->
           <div ngbDropdownMenu class="dropdown-menu" aria-labelledby="dropdown01">
+            <ng-container *ngIf="appUser.isAdmin">
+              <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
+              <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
+            </ng-container>           
             <a class="dropdown-item" routerLink="/my/orders">My Orders</a>
-            <a class="dropdown-item" routerLink="/admin/orders">Manage Orders</a>
-            <a class="dropdown-item" routerLink="/admin/products">Manage products</a>
             <a (click)="logout()" class="dropdown-item">Logout</a>
           </div>
         </li>
