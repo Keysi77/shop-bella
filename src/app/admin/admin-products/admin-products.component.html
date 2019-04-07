@@ -1,3 +1,60 @@
 <p>
-  admin-products works!
+  <a routerLink="/admin/products/new" class="btn btn-primary">New Product</a>
 </p>
+
+  <data-table
+      [items]="items"
+      [itemCount]="itemCount"
+      (reload)="reloadItems($event)"
+      >
+      <!-- 1. column - Title -->
+      <data-table-column
+        [property]="'title'"
+        [header]="'Title'"
+        [sortable]="true"
+        [resizable]="true"
+        >
+      </data-table-column>
+      <!-- 2. column - Price -->
+      <data-table-column
+        [property]="'price'"
+        [header]="'Price'"
+        [sortable]="true"
+        [resizable]="true"
+      >
+      <!-- template pre currency -->
+      <ng-template #dataTableCell let-item="product">
+          {{ product.payload.val().price | currency: 'USD':true}}
+      </ng-template>
+      </data-table-column>
+      <!-- 3. column - KEY  -->
+      <data-table-column
+        [property]="'$key'"
+      >
+      <!-- template pre currency -->
+      <ng-template #dataTableCell let-item="product">
+          <a [routerLink]="['/admin/products/', product.key]">Edit</a>
+      </ng-template>
+      </data-table-column>
+    </data-table>
+
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Price</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+      <tr *ngFor="let product of filteredProducts">
+          <td>{{ product.payload.val().title | uppercase }}</td>
+          <td>{{ product.payload.val().price | currency: 'USD':true}}</td>
+          <td>
+              <a [routerLink]="['/admin/products/', product.key]">Edit</a>
+          </td>
+      </tr>
+  </tbody>
+</table>
+
