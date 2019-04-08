@@ -38,6 +38,7 @@ import { ProductService } from './product.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatComponentsModule } from './material.module';
 import { DataTableModule } from 'angular7-data-table';
+//import {DataTableModule} from "angular-6-datatable";
 
 @NgModule({
 	declarations: [
