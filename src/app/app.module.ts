@@ -69,7 +69,7 @@ import { DataTableModule } from 'angular7-data-table';
 		// Routing
 		RouterModule.forRoot([
 			// Routes pre normalnych pouzivatelov
-			{ path: '', component: HomeComponent },
+			{ path: '', component: ProductsComponent }, // homapage bude zoznam produktov
 			{ path: 'products', component: ProductsComponent },
 			{ path: 'shoping-cart', component: ShopingCartComponent },
 			// zabezpec canActivate ze k tomuto routingu sa dostane len prihlaseny pouzivatel

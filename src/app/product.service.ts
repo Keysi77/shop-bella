@@ -5,7 +5,7 @@ import { AngularFireDatabase } from 'angularfire2/database';
   providedIn: 'root'
 })
 export class ProductService {
-
+  
   constructor(private db: AngularFireDatabase) { }
 
   // pushe objekt product do nodu /products
@@ -15,6 +15,9 @@ export class ProductService {
   // vsetky produkty getne na vypisane do tabulky v admin-products.html
   getAll(){
     return this.db.list('/products');
+  }
+  getAllCategories(){
+    return this.db.list('/categories');
   }
   // vrati ID produktu pre editovanie 
   get(productId){
