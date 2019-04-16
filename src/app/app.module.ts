@@ -34,10 +34,13 @@ import { ProductFormComponent } from './admin/product-form/product-form.componen
 import { CategoryService } from './category.service';
 import { FormsModule } from '@angular/forms';
 import { ProductService } from './product.service';
+import { ProductFilterComponent } from './products/product-filter/product-filter.component';
 // modul pre animacie 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatComponentsModule } from './material.module';
 import { DataTableModule } from 'angular7-data-table';
+import { ProductCardComponent } from './product-card/product-card.component';
+import { ShoppingCartService } from './shopping-cart.service';
 //import {DataTableModule} from "angular-6-datatable";
 
 @NgModule({
@@ -53,7 +56,9 @@ import { DataTableModule } from 'angular7-data-table';
 		AdminProductsComponent,
 		AdminOrdersComponent,
 		LoginComponent,
-		ProductFormComponent
+    ProductFormComponent,
+    ProductFilterComponent,
+    ProductCardComponent
 	],
 	imports: [
     MatComponentsModule,
@@ -103,7 +108,7 @@ import { DataTableModule } from 'angular7-data-table';
 		]),
 		NgbModule.forRoot()
 	],
-	providers: [ AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService, ProductService ],
+	providers: [ AuthService, AuthGuardService, UserService, AdminAuthGuardService, CategoryService, ProductService, ShoppingCartService ],
 	bootstrap: [ AppComponent ]
 })
 export class AppModule {}
